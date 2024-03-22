@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+from analisisLexico import cargar_archivo_txt
 
 def interfaz():
     # Crear la ventana
@@ -23,8 +24,7 @@ def interfaz():
         ruta_archivo = filedialog.askopenfilename()
         if ruta_archivo:
             # Leer el contenido del archivo
-            with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
-                contenido = archivo.read()
+            contenido=cargar_archivo_txt(ruta_archivo)
             # Insertar el contenido en el cuadro de texto
             textbox.delete(1.0, tk.END)  # Limpiar el contenido actual
             textbox.insert(tk.END, contenido)
