@@ -24,7 +24,8 @@ def interfaz():
         ruta_archivo = filedialog.askopenfilename()
         if ruta_archivo:
             # Leer el contenido del archivo
-            contenido=cargar_archivo_txt(ruta_archivo)
+            with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
+                contenido = archivo.read()
             # Insertar el contenido en el cuadro de texto
             textbox.delete(1.0, tk.END)  # Limpiar el contenido actual
             textbox.insert(tk.END, contenido)
