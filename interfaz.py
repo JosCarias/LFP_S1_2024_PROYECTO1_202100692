@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 from analisisLexico import cargar_archivo_txt
+from reporte import reporte
 
 def interfaz():
     # Crear la ventana
@@ -45,6 +46,10 @@ def interfaz():
     # Crear el cuadro de texto
     textbox = tk.Text(ventana, height=30, width=40,font=tamaño_fuente)
     textbox.grid(column=0,row=2,pady=5,padx=5)
+    
+    # Botón en la reporte
+    boton = tk.Button(ventana, text="Reporte", command=reporte,font=tamaño_fuente)
+    boton.grid(column=0,row=5,pady=5,padx=5)
     
     # Botón en la ventana
     boton = tk.Button(ventana, text="Cerrar Ventana", command=ventana.destroy,font=tamaño_fuente)
