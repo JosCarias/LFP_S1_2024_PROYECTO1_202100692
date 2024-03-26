@@ -266,7 +266,7 @@ def analizador(contenido):
             for i in range(24):
                 columnas.append(str(i)) 
                 filas.append(j)   
-        if linea_sin_sangria[0] == "}":
+        if linea_sin_sangria[0] == '}':
             tokens.append("}")
             columnas.append(str(i)) 
             filas.append(j)
@@ -281,15 +281,3 @@ def analizador(contenido):
         j+=1    
         i+=1 
         
-def hacerHtml():  
-    html=""
-    # Guardamos el HTML en un archivo
-    with open("LFP_S1_2024_PROYECTO1_202100692/resultado.html", "w", encoding="utf-8") as archivo_html:
-        archivo_html.write(html)
-        
-
-
-archivo_txt = "LFP_S1_2024_PROYECTO1_202100692\entrada.txt"
-#archivo_txt = "LFP_S1_2024_PROYECTO1_202100692\entradaPruebas.txt"
-contenido = cargar_archivo_txt(archivo_txt)
-analizador(contenido)

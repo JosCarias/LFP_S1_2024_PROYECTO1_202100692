@@ -21,7 +21,9 @@ def reporte():
         </tr>
     '''
     for i in range(len(tokens)):
-        tabla_html +='''<tr><td>'''
+        tabla_html +='''
+        <tr>
+            <td>'''
         if tokens[i]==":":
            tabla_html +="Dos puntos" 
         if tokens[i]=="{":
@@ -42,16 +44,23 @@ def reporte():
             tabla_html +="Comilla" 
         if tokens[i]==';':
             tabla_html +="Punto y coma"   
-        tabla_html +='''</td>'''
-        tabla_html +='''<td>'''
-        tabla_html +=tokens[i]
-        tabla_html +='''</td>'''
-        tabla_html +='''<td>'''
-        tabla_html +=str(filas[i])       
-        tabla_html +='''<td>'''
-        tabla_html +=columnas[i]
-        tabla_html +='''</td>'''
-        tabla_html +='''</td></tr>'''
+        tabla_html +='''
+            </td>\n'''
+        tabla_html +='''
+            <td>'''
+        tabla_html +="          "+tokens[i]
+        tabla_html +='''
+            </td>\n'''
+        tabla_html +='''
+            <td>'''
+        tabla_html +="          "+str(filas[i])       
+        tabla_html +='''
+            <td>\n'''
+        tabla_html +="          "+columnas[i]
+        tabla_html +='''
+            </td>\n'''
+        tabla_html +='''
+        </tr>'''
     tabla_html+='''
         </table>
     </body>
@@ -61,11 +70,10 @@ def reporte():
 
 
     # Agregar el contenido HTML en un archivo
-    with open("LFP_S1_2024_PROYECTO1_202100692/tabla.html", "w") as f:
+    with open("LFP_S1_2024_PROYECTO1_202100692/tabla.html", "w", encoding="utf-8") as f:
         f.write(tabla_html)
 
     # Abrir el archivo en el navegador
     ruta_absoluta = os.path.abspath("LFP_S1_2024_PROYECTO1_202100692/tabla.html")
     webbrowser.open("file://" + ruta_absoluta)
     
-reporte()
