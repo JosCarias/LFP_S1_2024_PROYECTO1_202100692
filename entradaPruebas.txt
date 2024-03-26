@@ -28,6 +28,12 @@ Inicio:{
         Negrita:{
             texto:"Este texto aparecerá en negrita.";
         },
+        Titulo:{
+            texto:"Este es un titulo 2";
+            posicion:"izquierda";
+            tamaño:"t2";
+            color:"rojo";
+        },
         Subrayado:{
             texto:"Este texto aparecerá Subrayado.";
         },

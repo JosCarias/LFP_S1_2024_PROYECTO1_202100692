@@ -3,6 +3,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 from analisisLexico import analizador, cargar_archivo_txt
 from reporte import reporte
+from hacerHtml import hacerHtml
 
 
 ruta=""
@@ -48,6 +49,11 @@ def interfaz():
         contenido = cargar_archivo_txt(ruta)
         analizador(contenido)  # Lee desde la primera línea hasta el último caracter
         messagebox.showinfo("Mensaje", "Se ha cargado el archivo")
+        hacerHtml()
+        with open("LFP_S1_2024_PROYECTO1_202100692/resultado.html", 'r', encoding='utf-8') as archivo:
+            contenido = archivo.read()
+        textboxDe.delete(1.0, tk.END)  # Limpiar el contenido actual
+        textboxDe.insert(tk.END, contenido)
         
     
     # Botón traducir
