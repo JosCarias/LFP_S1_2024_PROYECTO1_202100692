@@ -10,7 +10,7 @@ Inicio:{
             color:"rojo";
         },
         Fondo:{
-            color:"cyan";
+            color:"#FF0099";;
         },
         Parrafo:{
             texto:"Este es un parrafo de ejemplo.";

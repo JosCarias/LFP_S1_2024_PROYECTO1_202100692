@@ -8,50 +8,38 @@ Inicio:{
             posicion:"izquierda";
             tamaño:"t1";
             color:"rojo";
-        },
+        }
+        Titulo:{
+            texto:"Este es un titulo 2";
+            posicion:"centro";
+            tamaño:"t2";
+            color:"azul";
+        }
+        Titulo:{
+            texto:"Este es un titulo 3";
+            posicion:"derecha";
+            tamaño:"t3";
+            color:"amarillo";
+        }
         Fondo:{
-            color:"cyan";
+            color:"#FF0099";
         },
         Parrafo:{
             texto:"Este es un parrafo de ejemplo.";
             posicion:"izquierda";
+        },
+        Parrafo:{
+            texto:"Este es un parrafo de ejemplo.";
+            posicion:"derecha";
+        },
+        Parrafo:{
+            texto:"Este es un parrafo de ejemplo.";
+            posicion:"centro";
         },
         Texto:{
             fuente="Arial";
             color="azul";
             tamaño="11";
         },
-        Codigo:{
-            texto:"Muestra el texto con fuente de codigo de ordenador.";
-            posicion:"centro";
-        },
-        Negrita:{
-            texto:"Este texto aparecerá en negrita.";
-        },
-        Titulo:{
-            texto:"Este es un titulo 2";
-            posicion:"izquierda";
-            tamaño:"t2";
-            color:"rojo";
-        },
-        Subrayado:{
-            texto:"Este texto aparecerá Subrayado.";
-        },
-        Tachado:{
-            texto:"Este texto aparecerá tachado.";
-        },
-        Cursiva:{
-            texto:"Este texto aparecerá en cursiva.";
-        },
-        Salto:{
-            cantidad:"5";
-        },
-        Tabla:{
-            filas:"4";
-            columnas:"3";
-            elemento:{"fila":"1","columna":"1","Texto mostrado en fila 1 columna 1"};
-            elemento:{"fila":"1","columna":"2","Texto mostrado en fila 1 columna 2"};
-            elemento:{"fila":"1","columna":"3","Texto mostrado en fila 1 columna 3"};
-        }
     ]
 }   
