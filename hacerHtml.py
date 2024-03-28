@@ -6,7 +6,7 @@ def hacerHtml():
     titulo = []
     fondo=[]
     parrafo=[]
-    texto=[]
+    txt=[]
     codigo=[]
     negrita=[]
     subrayado=[]
@@ -66,7 +66,7 @@ def hacerHtml():
                     atributos[tokens[j]] = tokens[j + 3]
                 j += 1
             # Agregar los valores del diccionario a la lista de título
-            texto.append([atributos.get("fuente", ""), 
+            txt.append([atributos.get("fuente", ""), 
                            atributos.get("color", ""),
                            atributos.get("tamaño", "")])
         if tokens[i] == "Codigo":
@@ -134,17 +134,19 @@ def hacerHtml():
 
         # Establecer el estilo de acuerdo al tamaño
         if tamaño == "t1":
-            estilo += 'font-size: 30px;'
+            estilo += 'font-size: 30px;'  # Tamaño grande
         elif tamaño == "t2":
-            estilo += 'font-size: 25px;'
+            estilo += 'font-size: 25px;'  # Tamaño mediano grande
         elif tamaño == "t3":
-            estilo += 'font-size: 20px;'
+            estilo += 'font-size: 20px;'  # Tamaño medio
         elif tamaño == "t4":
-            estilo += 'font-size: 15px;'
+            estilo += 'font-size: 15px;'  # Tamaño mediano pequeño
         elif tamaño == "t5":
-            estilo += 'font-size: 12px;'
+            estilo += 'font-size: 12px;'  # Tamaño pequeño
         elif tamaño == "t6":
-            estilo += 'font-size: 10px;'
+            estilo += 'font-size: 10px;'  # Tamaño muy pequeño
+        else:
+            estilo += 'font-size:'+tamaño+"px;"  # Tamaño personali
 
         # Establecer el estilo de acuerdo al color
         if color == "rojo":
@@ -161,7 +163,6 @@ def hacerHtml():
     
     for lista in parrafo:
         estilo=""
-        texto=lista[0]
         posicion=lista[1] 
         # Establecer el estilo de acuerdo a la posición
         if posicion == "izquierda":
@@ -172,6 +173,60 @@ def hacerHtml():
             estilo += 'position: absolute; left: 50%; transform: translateX(-50%);' 
         # Agregar el div al HTML con el estilo aplicado
         html += '   <p style="' + estilo + '">' + lista[0] + '</p>\n'  
+        
+    for lista in txt:
+        estilo = "position: absolute;"
+        fuente = lista[0]
+        color = lista[1]
+        tamaño = lista[2]
+        estilo += "font-family: '" + fuente + "';"
+    
+        # Establecer el estilo de acuerdo al color
+        if color == "rojo":
+            estilo += 'color: red;'
+        elif color == "amarillo":
+            estilo += 'color: yellow;'
+        elif color == "azul":
+            estilo += 'color: blue;'
+        else:
+            estilo += 'color: ' + color + ';'
+         # Agregar el div al HTML con el estilo aplicado
+        html += '   <p style="' + estilo + '">' + "Atributo a texto" + '</p>\n'
+    
+    for lista in codigo:
+        estilo="font-family: 'Times New Roman', serif;"
+        posicion=lista[1] 
+        # Establecer el estilo de acuerdo a la posición
+        if posicion == "izquierda":
+            estilo += 'position: absolute; left: 0px;'
+        elif posicion == "derecha":
+            estilo += 'position: absolute; right: 0;'
+        elif posicion == "centro":
+            estilo += 'position: absolute; left: 50%; transform: translateX(-50%);' 
+        # Agregar el div al HTML con el estilo aplicado
+        html += '   <p style="' + estilo + '">' + lista[0] + '</p>\n' 
+    for lista in negrita:
+        estilo="" 
+        # Agregar el div al HTML con el estilo aplicado
+        html += '   <b style="' + estilo + '">' + lista + '</b>\n'  
+    for lista in subrayado:
+        estilo="" 
+        # Agregar el div al HTML con el estilo aplicado
+        html += '   <u style="' + estilo + '">' + lista + '</u>\n' 
+    for lista in tachado:
+        estilo="" 
+        # Agregar el div al HTML con el estilo aplicado
+        html += '   <s style="' + estilo + '">' + lista+ '</s>\n' 
+    for lista in cursiva:
+        estilo="" 
+        # Agregar el div al HTML con el estilo aplicado
+        html += '   <i style="' + estilo + '">' + lista + '</i>\n'
+    for lista in salto:
+        estilo="" 
+        i=0
+        for i in range(int(lista[0])):           
+            # Agregar el div al HTML con el estilo aplicado
+            html += '   <br>\n' 
             
                     
     
@@ -179,7 +234,7 @@ def hacerHtml():
     print(titulo)
     print(fondo)
     print(parrafo)
-    print(texto)
+    print(txt)
     print(codigo)
     print(negrita)
     print(subrayado)

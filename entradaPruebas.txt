@@ -9,37 +9,36 @@ Inicio:{
             tamaño:"t1";
             color:"rojo";
         }
-        Titulo:{
-            texto:"Este es un titulo 2";
-            posicion:"centro";
-            tamaño:"t2";
-            color:"azul";
-        }
-        Titulo:{
-            texto:"Este es un titulo 3";
-            posicion:"derecha";
-            tamaño:"t3";
-            color:"amarillo";
-        }
         Fondo:{
             color:"#FF0099";
         },
         Parrafo:{
             texto:"Este es un parrafo de ejemplo.";
-            posicion:"izquierda";
-        },
-        Parrafo:{
-            texto:"Este es un parrafo de ejemplo.";
             posicion:"derecha";
-        },
-        Parrafo:{
-            texto:"Este es un parrafo de ejemplo.";
-            posicion:"centro";
         },
         Texto:{
             fuente="Arial";
             color="azul";
             tamaño="11";
+        },
+        Codigo:{
+            texto:"Muestra el texto con fuente de codigo de ordenador.";
+            posicion:"centro";
+        },
+        Negrita:{
+            texto:"Este texto aparecerá en negrita.";
+        },
+        Subrayado:{
+            texto:"Este texto aparecerá Subrayado.";
+        },
+        Tachado:{
+            texto:"Este texto aparecerá tachado.";
+        },
+        Cursiva:{
+            texto:"Este texto aparecerá en cursiva.";
+        },
+        Salto:{
+            cantidad:"5";
         },
     ]
 }   
