@@ -1,6 +1,7 @@
 tokens=[]
 columnas=[]
 filas=[]
+errores=[]
 palabras_reservadas = ["Inicio", 
                        "Encabezado", 
                        "TituloPagina", 
@@ -278,6 +279,10 @@ def analizador(contenido):
             tokens.append(",") 
             columnas.append(str(i))
             filas.append(j) 
+        for i in range(len(linea_sin_sangria)):
+            if (linea_sin_sangria[i] in ["@", "/", "#"]) and i == len(linea_sin_sangria) - 1:
+                errores.append(linea_sin_sangria[i])
         j+=1    
         i+=1 
+    print(errores)
         

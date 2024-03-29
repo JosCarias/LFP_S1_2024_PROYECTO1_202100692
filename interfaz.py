@@ -4,6 +4,7 @@ from tkinter import messagebox
 from analisisLexico import analizador, cargar_archivo_txt
 from reporte import reporte
 from hacerHtml import hacerHtml
+from automataFinitoDeterminista import Grafica
 
 
 ruta=""
@@ -68,8 +69,12 @@ def interfaz():
     textboxDe = tk.Text(ventana, height=30, width=40,font=tamaño_fuente)
     textboxDe.grid(column=1,row=2,pady=5,padx=5)
     
+    def reporteDeArchivo():
+        reporte()
+        Grafica()
+    
     # Botón en la reporte
-    boton = tk.Button(ventana, text="Reporte", command=reporte,font=tamaño_fuente)
+    boton = tk.Button(ventana, text="Reporte", command=reporteDeArchivo,font=tamaño_fuente)
     boton.grid(column=0,row=5,pady=5,padx=5)
     
     # Botón en la ventana

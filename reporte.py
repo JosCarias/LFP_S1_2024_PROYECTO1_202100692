@@ -3,70 +3,54 @@ import os
 from analisisLexico import tokens,palabras_reservadas,columnas,filas
 
 def reporte():
+    errores=[]
     # Definir el contenido de la tabla en formato HTML
-    tabla_html = '''
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Reporte</title>
-    </head>
-    <body>
+    tabla_html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte</title>
+</head>
+<body>
     <table border="1" cellborder="1" cellspacing="0">
-        <tr>
-            <td>Token</td>
-            <td>Lexema</td>
-            <td>Filas</td>
-            <td>Columna</td>           
-        </tr>
-    '''
+    <tr>
+        <td>Token</td>
+        <td>Lexema</td>
+        <td>Filas</td>
+        <td>Columna</td>           
+    </tr>\n'''
     for i in range(len(tokens)):
-        tabla_html +='''
-        <tr>
-            <td>'''
-        if tokens[i]==":":
-           tabla_html +="Dos puntos" 
-        if tokens[i]=="{":
-            tabla_html +="Llave de apertura"
-        if tokens[i]=="}":
-            tabla_html +="Llave de cierre"
-        if tokens[i]==",":
-            tabla_html +="Coma"  
-        if tokens[i]=="[":
-            tabla_html +="Corchete de apertura"
-        if tokens[i]=="]":
-            tabla_html +="Corchete de cierre" 
-        if tokens[i] not in palabras_reservadas:
+        tabla_html += '''    <tr>
+        <td>'''
+        if tokens[i] == ":":
+            tabla_html += "Dos puntos" 
+        elif tokens[i] == "{":
+            tabla_html += "Llave de apertura"
+        elif tokens[i] == "}":
+            tabla_html += "Llave de cierre"
+        elif tokens[i] == ",":
+            tabla_html += "Coma"  
+        elif tokens[i] == "[":
+            tabla_html += "Corchete de apertura"
+        elif tokens[i] == "]":
+            tabla_html += "Corchete de cierre" 
+        elif tokens[i] not in palabras_reservadas:
             tabla_html += "Cadena"
+        elif tokens[i] == '"':
+            tabla_html += "Comilla" 
+        elif tokens[i] == ';':
+            tabla_html += "Punto y coma"   
         else:
             tabla_html += "Palabra reservada"
-        if tokens[i]=='"':
-            tabla_html +="Comilla" 
-        if tokens[i]==';':
-            tabla_html +="Punto y coma"   
-        tabla_html +='''
-            </td>\n'''
-        tabla_html +='''
-            <td>'''
-        tabla_html +="          "+tokens[i]
-        tabla_html +='''
-            </td>\n'''
-        tabla_html +='''
-            <td>'''
-        tabla_html +="          "+str(filas[i])       
-        tabla_html +='''
-            <td>\n'''
-        tabla_html +="          "+columnas[i]
-        tabla_html +='''
-            </td>\n'''
-        tabla_html +='''
-        </tr>'''
-    tabla_html+='''
-        </table>
-    </body>
-</html>
+          
+        tabla_html += '''</td>\n'''
+        tabla_html +="        <td>"+ tokens[i]+"</td>\n"
+        tabla_html +="        <td>"+str(filas[i])+"</td>\n"
+        tabla_html +="        <td>"+str(columnas[i])+"</td>\n"
+        tabla_html += '''    </tr>\n'''
     
-'''
+    
+    tabla_html+='''</table>\n</body>\n</html>'''
 
 
     # Agregar el contenido HTML en un archivo

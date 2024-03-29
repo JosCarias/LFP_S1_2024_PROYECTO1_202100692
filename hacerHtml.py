@@ -1,4 +1,6 @@
 from analisisLexico import tokens
+import webbrowser
+import os
 
 
 def hacerHtml():
@@ -127,9 +129,9 @@ def hacerHtml():
         # Establecer el estilo de acuerdo a la posición
         if posicion == "izquierda":
             estilo += 'position: absolute; left: 0px;'
-        elif posicion == "derecha":
-            estilo += 'position: absolute; right: 0;'
-        elif posicion == "centro":
+        if posicion == "derecha":
+            estilo += 'position: absolute; left: 100%; transform: translateX(-100%);'
+        if posicion == "centro":
             estilo += 'position: absolute; left: 50%; transform: translateX(-50%);'
 
         # Establecer el estilo de acuerdo al tamaño
@@ -159,7 +161,7 @@ def hacerHtml():
             estilo += 'color: ' + color + ';'
 
         # Agregar el div al HTML con el estilo aplicado
-        html += '   <div style="' + estilo + '">' + lista[0] + '</div>\n'
+        html += '   <div style="' + estilo + '">' + lista[0] + '</div>\n    <br>\n'
     
     for lista in parrafo:
         estilo=""
@@ -167,12 +169,12 @@ def hacerHtml():
         # Establecer el estilo de acuerdo a la posición
         if posicion == "izquierda":
             estilo += 'position: absolute; left: 0px;'
-        elif posicion == "derecha":
-            estilo += 'position: absolute; right: 0;'
-        elif posicion == "centro":
+        if posicion == "derecha":
+            estilo += 'position: absolute; left: 100%; transform: translateX(-100%);'
+        if posicion == "centro":
             estilo += 'position: absolute; left: 50%; transform: translateX(-50%);' 
         # Agregar el div al HTML con el estilo aplicado
-        html += '   <p style="' + estilo + '">' + lista[0] + '</p>\n'  
+        html += '   <p style="' + estilo + '">' + lista[0] + '</p>\n    <br>\n'  
         
     for lista in txt:
         estilo = "position: absolute;"
@@ -191,7 +193,7 @@ def hacerHtml():
         else:
             estilo += 'color: ' + color + ';'
          # Agregar el div al HTML con el estilo aplicado
-        html += '   <p style="' + estilo + '">' + "Atributo a texto" + '</p>\n'
+        html += '   <p style="' + estilo + '">' + "Atributo a texto" + '</p>\n  <br>\n'
     
     for lista in codigo:
         estilo="font-family: 'Times New Roman', serif;"
@@ -199,51 +201,59 @@ def hacerHtml():
         # Establecer el estilo de acuerdo a la posición
         if posicion == "izquierda":
             estilo += 'position: absolute; left: 0px;'
-        elif posicion == "derecha":
-            estilo += 'position: absolute; right: 0;'
-        elif posicion == "centro":
+        if posicion == "derecha":
+            estilo += 'position: absolute; left: 100%; transform: translateX(-100%);'
+        if posicion == "centro":
             estilo += 'position: absolute; left: 50%; transform: translateX(-50%);' 
         # Agregar el div al HTML con el estilo aplicado
-        html += '   <p style="' + estilo + '">' + lista[0] + '</p>\n' 
+        html += '   <p style="' + estilo + '">' + lista[0] + '</p>\n    <br>\n' 
+    
     for lista in negrita:
         estilo="" 
         # Agregar el div al HTML con el estilo aplicado
-        html += '   <b style="' + estilo + '">' + lista + '</b>\n'  
+        html += '   <b style="' + estilo + '">' + lista + '</b>\n   <br>\n'  
+    
     for lista in subrayado:
         estilo="" 
         # Agregar el div al HTML con el estilo aplicado
-        html += '   <u style="' + estilo + '">' + lista + '</u>\n' 
+        html += '   <u style="' + estilo + '">' + lista + '</u>\n   <br>\n' 
+    
     for lista in tachado:
         estilo="" 
         # Agregar el div al HTML con el estilo aplicado
-        html += '   <s style="' + estilo + '">' + lista+ '</s>\n' 
+        html += '   <s style="' + estilo + '">' + lista+ '</s>\n    <br>\n' 
+    
     for lista in cursiva:
         estilo="" 
         # Agregar el div al HTML con el estilo aplicado
-        html += '   <i style="' + estilo + '">' + lista + '</i>\n'
+        html += '   <i style="' + estilo + '">' + lista + '</i>\n   <br>\n'
+    
     for lista in salto:
         estilo="" 
         i=0
         for i in range(int(lista[0])):           
             # Agregar el div al HTML con el estilo aplicado
             html += '   <br>\n' 
-            
+       
+    for lista in tabla:
+        estilo="" 
+        i=0
+        j=0
+        html+='''   <table border="1" cellborder="1" cellspacing="0">\n'''
+        for i in range(int(lista[0])):
+            html+="   <tr>\n"
+            for j in range(int(lista[1])):
+                html+="   <td>"+str(i)+str(j)+"</td>\n"
+            html+="   </tr>\n"
+        html+="   </table>\n    <br>\n"
                     
     
-    html+="</body>\n</html>" 
-    print(titulo)
-    print(fondo)
-    print(parrafo)
-    print(txt)
-    print(codigo)
-    print(negrita)
-    print(subrayado)
-    print(tachado)
-    print(cursiva)
-    print(salto)
-    print(tabla)
-     
+    html+="</body>\n</html>"     
         
     # Guardamos el HTML en un archivo
     with open("LFP_S1_2024_PROYECTO1_202100692/resultado.html", "w", encoding="utf-8") as archivo_html:
         archivo_html.write(html)
+        
+    # Abrir el archivo en el navegador
+    ruta_absoluta = os.path.abspath("LFP_S1_2024_PROYECTO1_202100692/resultado.html")
+    webbrowser.open("file://" + ruta_absoluta)
