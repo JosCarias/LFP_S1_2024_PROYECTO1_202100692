@@ -16,6 +16,7 @@ def hacerHtml():
     cursiva=[]
     salto=[]
     tabla=[]
+    elementos=[]
     
     html="<!DOCTYPE html>\n"'''<html lang="en">\n'''+"<head>\n"
     html+='''    <meta charset="UTF-8">
@@ -105,6 +106,17 @@ def hacerHtml():
             # Agregar los valores del diccionario a la lista de título
             tabla.append([atributos.get("filas", ""), 
                            atributos.get("columnas", "")])
+        if tokens[i] == "elemento":
+            aux=[]
+            fila=tokens[i+8]
+            columna=tokens[i+16]
+            texto=tokens[i+20]
+            aux.append(fila)
+            aux.append(columna)
+            aux.append(texto)
+            elementos.append(aux)  
+            
+        
     
     for lista in fondo:
         estilo = ""
@@ -236,20 +248,31 @@ def hacerHtml():
             html += '   <br>\n' 
        
     for lista in tabla:
-        estilo="" 
-        i=0
-        j=0
-        html+='''   <table border="1" cellborder="1" cellspacing="0">\n'''
-        for i in range(int(lista[0])):
-            html+="   <tr>\n"
-            for j in range(int(lista[1])):
-                html+="   <td>"+str(i)+str(j)+"</td>\n"
-            html+="   </tr>\n"
-        html+="   </table>\n    <br>\n"
+        html += '''   <table border="1" cellborder="1" cellspacing="0">\n'''
+        filas = int(lista[0])
+        columnas = int(lista[1])
+        
+        for i in range(filas):
+            html += "   <tr>\n"
+            for j in range(columnas):
+                elemento_encontrado = False
+                for elemento in elementos:
+                    if i+1 == int(elemento[0]) and j+1 == int(elemento[1]):
+                        html += "   <td>" + elemento[2] + "</td>\n"
+                        elemento_encontrado = True
+                        break
+                    
+                if not elemento_encontrado:
+                    html += "   <td></td>\n"  # Insertar una celda en blanco
+                    
+            html += "   </tr>\n"
+        
+        html += "   </table>\n    <br>\n"
                     
     
     html+="</body>\n</html>"     
         
+    
     # Guardamos el HTML en un archivo
     with open("LFP_S1_2024_PROYECTO1_202100692/resultado.html", "w", encoding="utf-8") as archivo_html:
         archivo_html.write(html)

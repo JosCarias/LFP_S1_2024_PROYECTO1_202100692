@@ -56,6 +56,6 @@ def Grafica():
     dot.node(cadena, shape='box')
 
     # Guardar y mostrar el gráfico
-    dot.render('grafica')
+    dot.render('LFP_S1_2024_PROYECTO1_202100692/grafica')
     dot.view()
-    
+

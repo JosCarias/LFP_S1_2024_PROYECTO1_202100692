@@ -1,0 +1,27 @@
+digraph {
+	"Transiciones:
+            A -> aB 
+            A -> bC
+            A -> dD
+            B -> aB
+            D -> cD
+            D -> dC
+            B -> ε
+            C -> ε" [shape=box]
+	Inicio -> A
+	A [shape=circle]
+	B [shape=doublecircle]
+	C [shape=doublecircle]
+	D
+	A -> B [label=a]
+	A -> C [label=b]
+	A -> D [label=d]
+	B -> B [label=a]
+	D -> D [label=c]
+	D -> C [label=d]
+	"Definiciones:
+            A -> Letras del alfabeto mayúsculas y minúsculas 
+            B -> Los simbolos: , [ ] { } 
+            C -> cadena de caracteres, acepta cualquier cosas menos los saltos de lineas
+            D -> Comillas dobles" [shape=box]
+}
